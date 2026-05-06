@@ -7,10 +7,18 @@
   "bin": {
     "faust-mcp-magda": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "docs"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "faust",

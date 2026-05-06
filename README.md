@@ -7,6 +7,12 @@ The Faust compiler runs entirely in-process via WebAssembly — no external Faus
 ## Install
 
 ```bash
+npm install -g faust-mcp-magda
+```
+
+Or from source:
+
+```bash
 git clone https://github.com/Conceptual-Machines/faust-mcp-magda.git
 cd faust-mcp-magda
 npm install
@@ -16,6 +22,18 @@ npm run build
 ## Configure
 
 Add to your MCP client config (e.g. `.claude/settings.json`, `mcp.json`, or Claude Desktop config):
+
+```json
+{
+  "mcpServers": {
+    "faust-mcp-magda": {
+      "command": "faust-mcp-magda"
+    }
+  }
+}
+```
+
+If installed from source, use the full path instead:
 
 ```json
 {
