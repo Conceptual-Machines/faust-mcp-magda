@@ -4,21 +4,6 @@ MCP server that gives AI assistants access to the [Faust](https://faust.grame.fr
 
 The Faust compiler runs entirely in-process via WebAssembly — no external Faust installation required.
 
-## Install
-
-```bash
-npm install -g faust-mcp-magda
-```
-
-Or from source:
-
-```bash
-git clone https://github.com/Conceptual-Machines/faust-mcp-magda.git
-cd faust-mcp-magda
-npm install
-npm run build
-```
-
 ## Configure
 
 Add to your MCP client config (e.g. `.claude/settings.json`, `mcp.json`, or Claude Desktop config):
@@ -27,24 +12,14 @@ Add to your MCP client config (e.g. `.claude/settings.json`, `mcp.json`, or Clau
 {
   "mcpServers": {
     "faust-mcp-magda": {
-      "command": "faust-mcp-magda"
+      "command": "npx",
+      "args": ["faust-mcp-magda"]
     }
   }
 }
 ```
 
-If installed from source, use the full path instead:
-
-```json
-{
-  "mcpServers": {
-    "faust-mcp-magda": {
-      "command": "node",
-      "args": ["/path/to/faust-mcp-magda/dist/index.js"]
-    }
-  }
-}
-```
+No install step needed — `npx` fetches and caches the package automatically.
 
 ## Tools
 
