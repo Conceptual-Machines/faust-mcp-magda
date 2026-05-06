@@ -1,0 +1,37 @@
+{
+  "name": "faust-mcp-magda",
+  "version": "0.1.0",
+  "description": "Faust DSP compiler MCP server for MAGDA",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "faust-mcp-magda": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "faust",
+    "dsp",
+    "mcp",
+    "model-context-protocol",
+    "magda"
+  ],
+  "author": "Nomad Monad",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Conceptual-Machines/faust-mcp-magda.git"
+  },
+  "dependencies": {
+    "@grame/faustwasm": "^0.11.0",
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
