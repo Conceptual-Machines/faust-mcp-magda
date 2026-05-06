@@ -1,6 +1,6 @@
 {
   "name": "faust-mcp-magda",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Faust DSP compiler MCP server for MAGDA",
   "type": "module",
   "main": "dist/index.js",

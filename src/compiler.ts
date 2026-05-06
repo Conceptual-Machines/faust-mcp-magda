@@ -1,5 +1,6 @@
 import * as path from "path";
 import { fileURLToPath } from "url";
+import { createRequire } from "module";
 // The @grame/faustwasm package has a broken "main" pointing to CJS,
 // so we import from the ESM dist directly.
 import {
@@ -10,7 +11,7 @@ import {
   type FaustDspMeta,
 } from "@grame/faustwasm/dist/esm/index.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 
 let compiler: FaustCompiler | null = null;
 let compilerFS: typeof FS | null = null;
@@ -18,10 +19,8 @@ let compilerFS: typeof FS | null = null;
 export async function ensureCompiler(): Promise<FaustCompiler> {
   if (compiler) return compiler;
 
-  const jsFile = path.join(
-    __dirname,
-    "../node_modules/@grame/faustwasm/libfaust-wasm/libfaust-wasm.js"
-  );
+  const faustWasmDir = path.dirname(require.resolve("@grame/faustwasm/package.json"));
+  const jsFile = path.join(faustWasmDir, "libfaust-wasm/libfaust-wasm.js");
   const faustModule = await instantiateFaustModuleFromFile(jsFile);
   const libFaust = new LibFaust(faustModule);
   compiler = new FaustCompiler(libFaust);
